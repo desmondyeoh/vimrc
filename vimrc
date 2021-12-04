@@ -1,4 +1,4 @@
-set nocompatible              " required
+et nocompatible              " required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -24,6 +24,10 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 " YouCompleteMe - python auto-complete
 Bundle 'Valloric/YouCompleteMe'
+" Syntax checking / highlight
+Plugin 'vim-syntastic/syntastic'
+" PEP 8 checking
+Plugin 'nvie/vim-flake8'
 
 
 " -----------------------------------------
@@ -71,14 +75,33 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \| set softtabstop=2
     \| set shiftwidth=2
 
-" Flag white space
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+" Make code look pretty
+let python_highlight_all=1
+syntax on
 
 " UTF-8 support
 set encoding=utf-8
 
-" colorscheme
+" =========================================
+" COLOR THEME
+" =========================================
+
+" this have to put before the white space highlight below
 colorscheme onedark
 
+" Flag white space
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h
+    \  match BadWhitespace /\s\+$/
+
 " -----------------------------------------
+
+" python: virtual env support
+python3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
