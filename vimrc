@@ -67,9 +67,9 @@ au BufNewFile,BufRead *.py
 
 "" Other file types indentations
 "au BufNewFile,BufRead *.js,*.html,*.css
-"    \ set tabstop=2
-"    \ set softtabstop=2
-"    \ set shiftwidth=2
+"    \  set tabstop=2
+"    \| set softtabstop=2
+"    \| set shiftwidth=2
 "
 "" Flag white space
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
