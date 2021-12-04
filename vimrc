@@ -65,18 +65,20 @@ au BufNewFile,BufRead *.py
     \| set autoindent
     \| set fileformat=unix
 
-"" Other file types indentations
-"au BufNewFile,BufRead *.js,*.html,*.css
-"    \  set tabstop=2
-"    \| set softtabstop=2
-"    \| set shiftwidth=2
-"
-"" Flag white space
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-"
+" Other file types indentations
+au BufNewFile,BufRead *.js,*.html,*.css
+    \  set tabstop=2
+    \| set softtabstop=2
+    \| set shiftwidth=2
+
+" Flag white space
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 
 " UTF-8 support
 set encoding=utf-8
 
 " colorscheme
 colorscheme onedark
+
+" -----------------------------------------
